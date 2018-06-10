@@ -1,3 +1,5 @@
+import { AppRouting } from './app.routing';
+import { RouterModule, ChildrenOutletContexts } from '@angular/router';
 import { ClientService } from './../services/client.service';
 import { AuthService } from '../services/auth.service';
 import { BrowserModule } from '@angular/platform-browser';
@@ -6,17 +8,22 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { CommonModule } from '@angular/common';
+import { SigninComponent } from './signin/signin.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    SigninComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
     CommonModule,
     HttpClientModule,
     FormsModule,
+    AppRouting,
   ],
   providers: [
     AuthService,

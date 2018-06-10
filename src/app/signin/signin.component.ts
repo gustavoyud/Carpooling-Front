@@ -1,19 +1,18 @@
-import { AuthService } from './../services/auth.service';
+import { Router } from '@angular/router';
+import { AuthService } from './../../services/auth.service';
 import { Component, OnInit } from '@angular/core';
 
 /**
- * App Component
+ * Sign in Component
  *
  * Author: Gustavo Yud
- *
- * Created:
  */
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  selector: 'app-signin',
+  templateUrl: './signin.component.html',
+  styleUrls: ['./signin.component.scss']
 })
-export class AppComponent implements OnInit {
+export class SigninComponent implements OnInit {
 
   /**
    * Username Field
@@ -33,16 +32,17 @@ export class AppComponent implements OnInit {
   /**
    * App Constructor
    * @param { AuthService } auth - Auth HTTP Service
+   * @param { Router } router - Angular Router
    */
   constructor(
     private auth: AuthService,
+    private router: Router
   ) {}
+
   /**
    * Initializer
    */
-  ngOnInit() {
-
-  }
+  ngOnInit() { }
 
   /**
    * Make a login request
@@ -53,7 +53,10 @@ export class AppComponent implements OnInit {
       'password' : this.password,
     };
     this.auth.loginCheck(data, (response) => {
-      console.log(response);
+      if (response.status === 200 ) {
+        this.router.navigate(['/dashboard/']);
+      }
     });
   }
+
 }

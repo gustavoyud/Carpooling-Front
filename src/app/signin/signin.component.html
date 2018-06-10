@@ -1,0 +1,32 @@
+
+<div class="container-fluid">
+    <div class="row">
+      <div class="col-5">
+        <div class="left-container bg">
+        </div>
+      </div>
+      <div class="col-7">
+        <div class="pt-5 text-right register">
+          <span>Não é registrado?</span>
+          <button>Registre-se</button>
+        </div>
+        <div class="form-container">
+          <h1 class="text-left">Faça Login em WeSharing</h1>
+          <h3>Insira suas informações a baixo</h3>
+          <label for="username">Login</label>
+          <input id="username" class="form-control" type="text" [(ngModel)]="username">
+          <label for="password">Senha</label>
+
+          <span class="show-password" (click)="isVisible = !isVisible">
+            <i class="far {{ isVisible ? 'fa-eye-slash' : 'fa-eye' }} pr-2"></i>
+            {{ isVisible ? 'esconder' : 'mostrar' }} senha
+          </span>
+
+          <input id="password" class="form-control" type="{{ isVisible ? 'text' : 'password'}}" [(ngModel)]="password">
+          <div class="text-center">
+            <button (click)="login()"> Enviar </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
