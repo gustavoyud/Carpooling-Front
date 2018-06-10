@@ -48,4 +48,16 @@ export class AuthService {
     });
   }
 
+  /**
+   * Make a HTTP Post Request to register
+   *
+   * @param params - Data
+   * @param { Function } destiny - Function to deal with HTTP Response
+   */
+  public register(params: {}, destiny: Function): void {
+    this.client.post('/register/', params, (response: any) => {
+      destiny(response);
+    });
+  }
+
 }

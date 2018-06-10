@@ -1,6 +1,7 @@
 import { Router } from '@angular/router';
 import { AuthService } from './../../services/auth.service';
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 /**
  * Sign in Component
@@ -33,6 +34,7 @@ export class SigninComponent implements OnInit {
    * message Error
    */
   public messageError: string;
+
   /**
    * App Constructor
    * @param { AuthService } auth - Auth HTTP Service
@@ -50,15 +52,6 @@ export class SigninComponent implements OnInit {
     this.auth.signinCheck((response) => { });
   }
 
-  public validation(): void {
-    if (this.username === '') {
-      this.messageError = 'O nome de Usuário deve ser preenchido';
-    } else if (this.password === '') {
-      this.messageError = 'A senha deve ser informada';
-    } else {
-      this.messageError = null;
-    }
-  }
   /**
    * Make a login request
    */

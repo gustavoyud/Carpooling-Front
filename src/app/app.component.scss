@@ -73,6 +73,7 @@ html,body{
       border-radius     : 8px;
       background-color  : $color_button_1;
     }
+    button:disabled { background-color  : $color_font_2;}
 
     .show-password {
       cursor     : pointer;

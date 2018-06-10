@@ -1,3 +1,4 @@
+import { RegisterComponent } from './register/register.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
@@ -8,6 +9,7 @@ const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'dashboard', component: DashboardComponent },
   { path: 'login', component: SigninComponent},
+  { path: 'register', component: RegisterComponent},
 ];
 
 export const AppRouting: ModuleWithProviders = RouterModule.forRoot(routes, { useHash: true });

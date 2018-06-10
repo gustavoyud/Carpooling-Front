@@ -7,28 +7,34 @@
       <div class="col-7">
         <div class="pt-5 text-right register">
           <span>Não é registrado?</span>
-          <button>Registre-se</button>
+          <button [routerLink]="['/register/']">Registre-se</button>
         </div>
         <div class="form-container">
           <h1 class="text-left">Faça Login em WeSharing</h1>
           <h3>Insira suas informações a baixo</h3>
           <label for="username">Login</label>
-          <input id="username" (keyup)="validation()" class="form-control" type="text" [(ngModel)]="username">
-          <label for="password">Senha</label>
+          <input id="username" class="form-control" type="text" [(ngModel)]="username" required minlength="4" #usernameForm="ngModel">
 
+          <label for="password">Senha</label>
           <span class="show-password" (click)="isVisible = !isVisible">
             <i class="far {{ isVisible ? 'fa-eye-slash' : 'fa-eye' }} pr-2"></i>
             {{ isVisible ? 'esconder' : 'mostrar' }} senha
           </span>
+          <input id="password" class="form-control" type="{{ isVisible ? 'text' : 'password'}}" [(ngModel)]="password">
 
-          <input (keyup)="validation()" id="password" class="form-control" type="{{ isVisible ? 'text' : 'password'}}" [(ngModel)]="password">
+          <div class="text-center text-danger error-message" *ngIf="usernameForm.invalid && (usernameForm.dirty || usernameForm.touched)">
+              <i class="fas fa-user-times pr-2"></i>
+              <span *ngIf="usernameForm?.errors?.required"> O nome de usuário deve ser Informado</span>
+              <span *ngIf="usernameForm?.errors?.minlength"> O nome de usuário deve possuir mais de 4</span>
+          </div>
+
 
           <div class="text-center text-danger error-message" *ngIf="messageError">
             <i class="fas fa-lock pr-2 "></i> {{messageError}}
           </div>
 
           <div class="text-center">
-            <button [disabled]="messageError" (click)="login()"> Enviar </button>
+            <button [disabled]="usernameForm.invalid" (click)="login()"> Enviar </button>
           </div>
         </div>
       </div>
