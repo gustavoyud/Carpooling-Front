@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { ClientService } from './client.service';
 import { Injectable } from '@angular/core';
 
@@ -14,20 +15,37 @@ export class AuthService {
    * @param { ClientService } client - HTTP Client Service
    */
   constructor(
-    private client: ClientService
+    private client: ClientService,
+    private router: Router,
   ) { }
 
   /**
-   * Make a login check request
+   * Make a login request
    *
    * @param {} params - Data
    * @param { Function } destiny - Function who deal with HTTP Response
    */
-  public loginCheck(params: {}, destiny: Function): void {
+  public signin(params: {}, destiny: Function): void {
 
   this.client.post('/login/', params, (response: any) => {
     destiny(response);
   });
+  }
+
+  /**
+   * Make a HTTP Check request
+   * @param { Function } destiny - Function to deal with HTTP Response
+   */
+  public signinCheck(destiny: Function): void {
+    const params = {};
+    this.client.get('/login/check/', params, (response: any) => {
+      if (response.status === 200) {
+        this.router.navigate(['/dashboard/']);
+      } else if (response.status === 401 || response.status === 403) {
+        this.router.navigate(['/login/']);
+      }
+      destiny(response);
+    });
   }
 
 }

@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpResponseBase, HttpResponse, HttpErrorResponse } from '@angular/common/http';
 
@@ -15,6 +16,7 @@ export class ClientService {
    */
   constructor(
     private http: HttpClient,
+    private router: Router,
   ) { }
 
   /**
@@ -67,6 +69,9 @@ export class ClientService {
         if (response.body['token']) {
           localStorage.setItem('access_token', 'Token ' + response.body['token']);
         }
+        if (response.statuts === 403 || response.status === 401) {
+          this.router.navigate(['/login/']);
+        }
         destiny(response);
       },
       (error: HttpResponseBase) => {
@@ -78,43 +83,6 @@ export class ClientService {
     );
   }
 
-  /**
-   * HTTP POST for Uploads method
-   *
-   * @param url - API route
-   * @param data - data dictionary
-   * @param destiny - Function to deal with HTTP response
-   */
-  public postUpload(url: string, data: any, destiny: Function): void {
-    let token = '';
-
-    if (localStorage.getItem('access_token')) {
-      token = localStorage.getItem('access_token');
-    }
-
-    const httpHeaders = new HttpHeaders({
-      'Authorization': token
-    });
-
-    this.http.post(this.API_URL + url, data, {
-      headers: httpHeaders,
-      observe: 'response'
-    })
-      .subscribe(
-        (response: HttpResponseBase) => {
-          if (response.headers.get('Authorization')) {
-            localStorage.setItem('access_token', response.headers.get('Authorization'));
-          }
-          destiny(response);
-        },
-        (error: HttpResponseBase) => {
-          if (error.headers['Authorization']) {
-            localStorage.setItem('access_token', error.headers['Authorization']);
-          }
-          destiny(error);
-        }
-      );
-  }
 
   /**
    * HTTP PUT method
@@ -139,9 +107,12 @@ export class ClientService {
       observe: 'response'
     })
     .subscribe(
-      (response: HttpResponseBase) => {
-        if (response.headers.get('Authorization')) {
-          localStorage.setItem('access_token', response.headers.get('Authorization'));
+      (response: any) => {
+        if (response.body['token']) {
+          localStorage.setItem('access_token', 'Token ' + response.body['token']);
+        }
+        if (response.statuts === 403 || response.status === 401) {
+          this.router.navigate(['/login/']);
         }
         destiny(response);
       },
@@ -178,9 +149,12 @@ export class ClientService {
       observe: 'response'
     })
     .subscribe(
-      (response: HttpResponseBase) => {
-        if (response.headers.get('Authorization')) {
-          localStorage.setItem('access_token', response.headers.get('Authorization'));
+      (response: any) => {
+        if (response.body['token']) {
+          localStorage.setItem('access_token', 'Token ' + response.body['token']);
+        }
+        if (response.statuts === 403 || response.status === 401) {
+          this.router.navigate(['/login/']);
         }
         destiny(response);
       },
@@ -218,9 +192,12 @@ export class ClientService {
     },
     )
       .subscribe(
-        (response: HttpResponseBase) => {
-          if (response.headers.get('Authorization')) {
-            localStorage.setItem('access_token', response.headers.get('Authorization'));
+        (response: any) => {
+          if (response.body['token']) {
+            localStorage.setItem('access_token', 'Token ' + response.body['token']);
+          }
+          if (response.statuts === 403 || response.status === 401) {
+            this.router.navigate(['/login/']);
           }
           destiny(response);
         },

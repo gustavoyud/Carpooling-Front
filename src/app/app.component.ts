@@ -16,21 +16,6 @@ import { Component, OnInit } from '@angular/core';
 export class AppComponent implements OnInit {
 
   /**
-   * Username Field
-   */
-  public username = '';
-
-  /**
-   * Password Field
-   */
-  public password = '';
-
-  /**
-   * Visibility Boolean
-   */
-  public isVisible = false;
-
-  /**
    * App Constructor
    * @param { AuthService } auth - Auth HTTP Service
    */
@@ -44,16 +29,4 @@ export class AppComponent implements OnInit {
 
   }
 
-  /**
-   * Make a login request
-   */
-  public login(): void {
-    const data = {
-      'username' : this.username,
-      'password' : this.password,
-    };
-    this.auth.loginCheck(data, (response) => {
-      console.log(response);
-    });
-  }
 }

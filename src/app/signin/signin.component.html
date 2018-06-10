@@ -1,4 +1,3 @@
-
 <div class="container-fluid">
     <div class="row">
       <div class="col-5">
@@ -14,7 +13,7 @@
           <h1 class="text-left">Faça Login em WeSharing</h1>
           <h3>Insira suas informações a baixo</h3>
           <label for="username">Login</label>
-          <input id="username" class="form-control" type="text" [(ngModel)]="username">
+          <input id="username" (keyup)="validation()" class="form-control" type="text" [(ngModel)]="username">
           <label for="password">Senha</label>
 
           <span class="show-password" (click)="isVisible = !isVisible">
@@ -22,9 +21,14 @@
             {{ isVisible ? 'esconder' : 'mostrar' }} senha
           </span>
 
-          <input id="password" class="form-control" type="{{ isVisible ? 'text' : 'password'}}" [(ngModel)]="password">
+          <input (keyup)="validation()" id="password" class="form-control" type="{{ isVisible ? 'text' : 'password'}}" [(ngModel)]="password">
+
+          <div class="text-center text-danger error-message" *ngIf="messageError">
+            <i class="fas fa-lock pr-2 "></i> {{messageError}}
+          </div>
+
           <div class="text-center">
-            <button (click)="login()"> Enviar </button>
+            <button [disabled]="messageError" (click)="login()"> Enviar </button>
           </div>
         </div>
       </div>

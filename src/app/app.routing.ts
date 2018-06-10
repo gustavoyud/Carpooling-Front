@@ -5,8 +5,9 @@ import { ModuleWithProviders } from '@angular/core';
 import { SigninComponent } from './signin/signin.component';
 
 const routes: Routes = [
-  { path: '', component: SigninComponent },
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'dashboard', component: DashboardComponent },
+  { path: 'login', component: SigninComponent},
 ];
 
 export const AppRouting: ModuleWithProviders = RouterModule.forRoot(routes, { useHash: true });
