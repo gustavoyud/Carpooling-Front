@@ -29,4 +29,16 @@ export class UsersService {
     });
   }
 
+  /**
+   * Create a new user
+   *
+   * @param params - Data
+   * @param { Function } destiny - Function to deal with HTTP Response
+   */
+  public createUser(params: {}, destiny: Function): void {
+    this.client.post('/users/', params, (response: any) => {
+      destiny(response);
+    });
+  }
+
 }

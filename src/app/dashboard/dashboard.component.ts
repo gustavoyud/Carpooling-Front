@@ -37,8 +37,12 @@ export class DashboardComponent implements OnInit {
     this.auth.signinCheck((response) => { });
     this.users.getUsers((response) => {
       if (response.status === 200) {
-        this.name = response.body[0].name;
-      }
+        if (!response.body[0]) {
+          this.router.navigate(['/signup/']);
+        } else {
+          this.name = response.body[0].name;
+        }
+        }
     });
   }
 
@@ -46,6 +50,8 @@ export class DashboardComponent implements OnInit {
    * logout Method
    */
   public logout(): void {
+    localStorage.removeItem('url');
+    localStorage.removeItem('username');
     localStorage.removeItem('access_token');
     this.router.navigate(['/login/']);
   }

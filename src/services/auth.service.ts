@@ -30,6 +30,7 @@ export class AuthService {
   this.client.post('/login/', params, (response: any) => {
     if (response.status !== 400) {
       localStorage.setItem('username', response.body['username']);
+      localStorage.setItem('url', response.body['url']);
     }
     destiny(response);
   });

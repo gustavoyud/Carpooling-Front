@@ -12,6 +12,7 @@ import { CommonModule } from '@angular/common';
 import { SigninComponent } from './signin/signin.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { RegisterComponent } from './register/register.component';
+import { SignupComponent } from './signup/signup.component';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { RegisterComponent } from './register/register.component';
     AppComponent,
     SigninComponent,
     DashboardComponent,
-    RegisterComponent
+    RegisterComponent,
+    SignupComponent
   ],
   imports: [
     BrowserModule,
