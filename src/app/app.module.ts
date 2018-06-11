@@ -1,3 +1,4 @@
+import { UsersService } from './../services/users.service';
 import { AppRouting } from './app.routing';
 import { RouterModule, ChildrenOutletContexts } from '@angular/router';
 import { ClientService } from './../services/client.service';
@@ -30,6 +31,7 @@ import { RegisterComponent } from './register/register.component';
   providers: [
     AuthService,
     ClientService,
+    UsersService,
   ],
   bootstrap: [AppComponent]
 })
