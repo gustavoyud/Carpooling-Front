@@ -53,6 +53,7 @@ export class DashboardComponent implements OnInit {
     localStorage.removeItem('url');
     localStorage.removeItem('username');
     localStorage.removeItem('access_token');
+    localStorage.removeItem('pk');
     this.router.navigate(['/login/']);
   }
 

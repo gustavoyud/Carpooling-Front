@@ -1,3 +1,4 @@
+import { CarsComponent } from './cars/cars.component';
 import { SignupComponent } from './signup/signup.component';
 import { RegisterComponent } from './register/register.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
@@ -12,6 +13,7 @@ const routes: Routes = [
   { path: 'login', component: SigninComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'signup', component: SignupComponent },
+  { path: 'car', component: CarsComponent },
 ];
 
 export const AppRouting: ModuleWithProviders = RouterModule.forRoot(routes, { useHash: true });

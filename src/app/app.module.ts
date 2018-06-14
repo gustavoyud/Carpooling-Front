@@ -13,6 +13,7 @@ import { SigninComponent } from './signin/signin.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { RegisterComponent } from './register/register.component';
 import { SignupComponent } from './signup/signup.component';
+import { CarsComponent } from './cars/cars.component';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { SignupComponent } from './signup/signup.component';
     SigninComponent,
     DashboardComponent,
     RegisterComponent,
-    SignupComponent
+    SignupComponent,
+    CarsComponent
   ],
   imports: [
     BrowserModule,
