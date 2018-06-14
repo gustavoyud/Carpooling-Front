@@ -1,3 +1,4 @@
+import { UsersService } from './../services/users.service';
 import { AppRouting } from './app.routing';
 import { RouterModule, ChildrenOutletContexts } from '@angular/router';
 import { ClientService } from './../services/client.service';
@@ -11,6 +12,8 @@ import { CommonModule } from '@angular/common';
 import { SigninComponent } from './signin/signin.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { RegisterComponent } from './register/register.component';
+import { SignupComponent } from './signup/signup.component';
+import { CarsComponent } from './cars/cars.component';
 
 
 @NgModule({
@@ -18,7 +21,9 @@ import { RegisterComponent } from './register/register.component';
     AppComponent,
     SigninComponent,
     DashboardComponent,
-    RegisterComponent
+    RegisterComponent,
+    SignupComponent,
+    CarsComponent
   ],
   imports: [
     BrowserModule,
@@ -30,6 +35,7 @@ import { RegisterComponent } from './register/register.component';
   providers: [
     AuthService,
     ClientService,
+    UsersService,
   ],
   bootstrap: [AppComponent]
 })

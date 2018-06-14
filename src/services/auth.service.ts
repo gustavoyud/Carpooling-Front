@@ -28,6 +28,11 @@ export class AuthService {
   public signin(params: {}, destiny: Function): void {
 
   this.client.post('/login/', params, (response: any) => {
+    if (response.status !== 400) {
+      localStorage.setItem('username', response.body['username']);
+      localStorage.setItem('url', response.body['url']);
+      localStorage.setItem('pk', response.body['pk']);
+    }
     destiny(response);
   });
   }

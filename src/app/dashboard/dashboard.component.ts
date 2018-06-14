@@ -1,3 +1,4 @@
+import { UsersService } from './../../services/users.service';
 import { Router } from '@angular/router';
 import { AuthService } from './../../services/auth.service';
 import { Component, OnInit } from '@angular/core';
@@ -13,7 +14,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
-
+  /**
+   * User Name
+   */
+  public name = '';
   /**
    * Dashboard Constructor
    *
@@ -23,6 +27,7 @@ export class DashboardComponent implements OnInit {
   constructor(
     private router: Router,
     private auth: AuthService,
+    private users: UsersService,
   ) { }
 
   /**
@@ -30,13 +35,25 @@ export class DashboardComponent implements OnInit {
    */
   ngOnInit() {
     this.auth.signinCheck((response) => { });
+    this.users.getUsers((response) => {
+      if (response.status === 200) {
+        if (!response.body[0]) {
+          this.router.navigate(['/signup/']);
+        } else {
+          this.name = response.body[0].name;
+        }
+        }
+    });
   }
 
   /**
    * logout Method
    */
   public logout(): void {
+    localStorage.removeItem('url');
+    localStorage.removeItem('username');
     localStorage.removeItem('access_token');
+    localStorage.removeItem('pk');
     this.router.navigate(['/login/']);
   }
 

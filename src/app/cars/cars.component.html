@@ -1,0 +1,39 @@
+<div class="container">
+  <div class="row">
+    <div class="col-4">
+
+    <div class="form-container">
+      <h2>Cadastro de carros</h2>
+      <input class="form-control mb-2" placeholder="Modelo" type="text" [(ngModel)]="model">
+      <input class="form-control mb-2" placeholder="Placa" type="text" [(ngModel)]="license_plate">
+      <input class="form-control mb-2" placeholder="Cor" type="text" [(ngModel)]="color">
+      <input class="form-control mb-2" placeholder="Capacidade" type="text" [(ngModel)]="capacity">
+      <button class="btn btn-success" (click)="createCar()"> Criar</button>
+    </div>
+  </div>
+  <div class="col-8">
+    <div class="cars">
+      <h2>Seus Carros</h2>
+        <div *ngFor="let car of carList" class="card mb-4">
+            <div class="card-body">
+              <div class="form-container">
+                <div class="row">
+                  <input class="pl-3 form-container mb-2 h4" type="text" [ngModel]="car['model']" (ngModelChange)="car['model'] = $event">
+                 <div class="pl-5">
+                   <i (click)="updateCar(car['car_pk'], car['model'], car['license_plate'], car['color'], car['capacity'])" class="pl-2 fas fa-pencil-alt cursor pr-2 text-primary"></i>
+                   <i (click)="deleteCar(car['car_pk'])" class="far cursor fa-trash-alt text-danger"></i>
+                 </div>
+
+                </div>
+                <input class="form-control mb-2" type="text" [ngModel]="car['license_plate']" (ngModelChange)="car['license_plate'] = $event">
+                <input class="form-control mb-2" type="text" [ngModel]="car['color']" (ngModelChange)="car['color'] = $event">
+                <input class="form-control mb-2" type="text" [ngModel]="car['capacity']" (ngModelChange)="car['capacity'] = $event">
+                <div class="text-center">
+                </div>
+              </div>
+            </div>
+          </div>
+    </div>
+  </div>
+  </div>
+</div>

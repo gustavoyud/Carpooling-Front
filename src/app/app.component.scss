@@ -34,11 +34,12 @@ html,body{
 }
 .col-5{ padding: 0px;}
 
+.cursor { cursor: pointer;}
 
 
 .form-container{
   color       : $color_font_1;
-  padding     : 20vh 12vw;
+  padding     : 20vh 2vw;
   font-family : 'Roboto', sans-serif;
 
     input.form-control {
