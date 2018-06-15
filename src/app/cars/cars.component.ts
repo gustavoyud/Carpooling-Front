@@ -91,6 +91,8 @@ export class CarsComponent implements OnInit {
     this.users.getCars(data, (response) => {
       if (response.status === 200) {
         this.carList = response.body;
+        console.log(response.body);
+        console.log(this.carList);
       }
     });
   }
@@ -127,7 +129,9 @@ export class CarsComponent implements OnInit {
   public deleteCar(pk: string): void {
     const data = {};
     this.users.deleteCar(pk, data, (response) => {
-      this.getCar();
+      if (response.status === 204) {
+        this.getCar();
+      }
     });
   }
 

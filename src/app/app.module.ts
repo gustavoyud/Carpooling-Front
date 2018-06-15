@@ -14,6 +14,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { RegisterComponent } from './register/register.component';
 import { SignupComponent } from './signup/signup.component';
 import { CarsComponent } from './cars/cars.component';
+import { DestinyComponent } from './destiny/destiny.component';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { CarsComponent } from './cars/cars.component';
     DashboardComponent,
     RegisterComponent,
     SignupComponent,
-    CarsComponent
+    CarsComponent,
+    DestinyComponent
   ],
   imports: [
     BrowserModule,

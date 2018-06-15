@@ -91,4 +91,54 @@ export class UsersService {
     });
   }
 
+  /**
+   * Method to Get Destiny Data
+   *
+   * @param { Fuction } destiny - Function to deal with HTTP response
+   */
+  public getDestinyList(destiny: Function): void {
+    const data = {};
+    this.client.get('/api/places/destiny/', data, (response) => {
+      destiny(response);
+    });
+  }
+
+  /**
+   * Method to Get Destiny Data
+   *
+   * @param { Fuction } destiny - Function to deal with HTTP response
+   */
+  public createDestiny(params: {}, destiny: Function): void {
+    this.client.post('/api/places/destiny/', params, (response) => {
+      destiny(response);
+    });
+  }
+
+
+  /**
+   * Method to Update Destiny Object
+   *
+   * @param { string } pk - Destiny Primary Key
+   * @param params - Data
+   * @param { Function } destiny - Function to deal with HTTP Response
+   */
+  public updateDestiny(pk: string, params: {} , destiny: Function): void {
+    this.client.put('/api/places/destiny/' + pk + '/', params , (response: any) => {
+      destiny(response);
+    });
+  }
+
+    /**
+   * Method to Delete Destiny Object
+   *
+   * @param { string } pk - Destiny Primary Key
+   * @param { Function } destiny - Function to deal with HTTP Response
+   */
+  public deleteDestiny(pk: string, destiny: Function): void {
+    const data = {};
+    this.client.delete('/api/places/destiny/' + pk + '/' , data, (response: any) => {
+      destiny(response);
+    });
+  }
+
 }

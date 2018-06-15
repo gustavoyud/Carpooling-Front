@@ -1,0 +1,48 @@
+<div class="container">
+  <div class="row">
+    <div class="col-4">
+
+    <div class="form-container">
+      <h2>Cadastro de Destinos</h2>
+      <input class="form-control mb-2" placeholder="Destino" type="text" [(ngModel)]="address">
+      <input class="form-control mb-2" placeholder="Complemento" type="text" [(ngModel)]="complement">
+      <input class="form-control mb-2" placeholder="CEP" type="number" [(ngModel)]="zipCode">
+      <input class="form-control mb-2" placeholder="Bairro" type="text" [(ngModel)]="neighborhood">
+      <input class="form-control mb-2" placeholder="Cidade" type="text" [(ngModel)]="city">
+      <input class="form-control mb-2" placeholder="UF" type="text" [(ngModel)]="federal_unit">
+      <input class="form-control mb-2" placeholder="Telefone" type="number" [(ngModel)]="phone">
+
+      <button class="btn btn-success" (click)="createDestiny()"> Criar</button>
+    </div>
+  </div>
+  <div class="col-8">
+    <div class="cars">
+      <h2>Seus Destinos</h2>
+        <div *ngFor="let destiny of destinyList" class="card mb-4">
+            <div class="card-body">
+              <div class="form-container">
+                <div class="row">
+                  <input class="pl-3 form-container mb-2 h4" type="text" [ngModel]="destiny['address']" (ngModelChange)="destiny['address'] = $event">
+                 <div class="pl-5">
+                   <i
+                   (click)="updateDestiny(destiny['destiny_pk'], destiny['address'], destiny['complement'], destiny['zip'], destiny['neighborhood'], destiny['city'], destiny['federal_unit'], destiny['phone'])"
+                   class="pl-2 fas fa-pencil-alt cursor pr-2 text-primary"></i>
+                   <i (click)="deleteDestiny(destiny['destiny_pk'])"  class="far cursor fa-trash-alt text-danger"></i>
+                 </div>
+
+                </div>
+                <input class="form-control mb-2" type="text" [ngModel]="destiny['complement']" (ngModelChange)="destiny['complement'] = $event">
+                <input class="form-control mb-2" type="text" [ngModel]="destiny['zip']" (ngModelChange)="destiny['zip'] = $event">
+                <input class="form-control mb-2" type="text" [ngModel]="destiny['neighborhood']" (ngModelChange)="destiny['neighborhood'] = $event">
+                <input class="form-control mb-2" type="text" [ngModel]="destiny['city']" (ngModelChange)="destiny['city'] = $event">
+                <input class="form-control mb-2" type="text" [ngModel]="destiny['federal_unit']" (ngModelChange)="destiny['federal_unit'] = $event">
+                <input class="form-control mb-2" type="text" [ngModel]="destiny['phone']" (ngModelChange)="destiny['phone'] = $event">
+                <div class="text-center">
+                </div>
+              </div>
+            </div>
+          </div>
+    </div>
+  </div>
+  </div>
+</div>
