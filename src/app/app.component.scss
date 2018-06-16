@@ -46,6 +46,10 @@ html,body{
       border            : none;
       background-color  : $color_background_1;
     }
+    select.form-control {
+      border            : none;
+      background-color  : $color_background_1;
+    }
 
     h1 {
       font-size   : 36px;

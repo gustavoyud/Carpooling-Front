@@ -1,3 +1,4 @@
+import { AuthService } from './../../services/auth.service';
 import { UsersService } from './../../services/users.service';
 import { Component, OnInit } from '@angular/core';
 
@@ -55,7 +56,10 @@ export class DestinyComponent implements OnInit {
    */
   constructor(
     private users: UsersService,
-  ) { }
+    private auth: AuthService,
+  ) {
+    // this.auth.signinCheck(() => {});
+  }
 
   /**
    * Initializer
