@@ -10,6 +10,17 @@
 </div>
 
 <div class="container">
-
+  <div class="card" *ngFor="let schedule of scheduleList">
+    <div class="card-body mb-2">
+      <h2>Modelo: {{ schedule['cars']?.model }}</h2>
+      <h5>Placa: {{ schedule['cars']?.license_plate }}</h5>
+      <h5>Cor: {{ schedule['cars']?.color }}</h5>
+      <h5>Capacidade: {{ schedule['cars']?.capacity }}</h5>
+      <h5>Hora: <time datetime="schedule['dateTime']"> {{schedule['dateTime']}} </time> </h5>
+      <h5>Endereço: {{ schedule['final_destiny']?.address }} - {{ schedule['final_destiny']?.complement }}</h5>
+      <h5>Cidade: {{schedule['final_destiny']?.city }}</h5>
+      <h5></h5>
+    </div>
+  </div>
 
 </div>

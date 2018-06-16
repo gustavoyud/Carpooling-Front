@@ -30,8 +30,6 @@
                   </div>
                 </div>
                 <input class="form-control mb-2" type="datetime" placeholder="Hora" [ngModel]="schedule['dateTime']" (ngModelChange)="schedule['dateTime'] = $event">
-                <!-- <input class="form-control mb-2" type="text" [ngModel]="schedule['cars']?.model" (ngModelChange)="schedule['cars'].model = $event"> -->
-                <!-- <input class="form-control mb-2" type="text" [ngModel]="schedule['final_destiny']?.address" (ngModelChange)="schedule['final_destiny'].address = $event"> -->
 
                 <select class="form-control mb-2"
                         (change)="schedule['final_destiny'].destiny_pk = $event.target.value"
@@ -44,10 +42,11 @@
                 </select>
 
                 <select class="form-control mb-2"
-                      ([ngModel])="schedule['cars']?.model">
+                      (change)="schedule['cars'].car_pk = $event.target.value">
                 <option
                         *ngFor="let car of carList"
                         [value]="car['car_pk']"
+                        [selected]="schedule['cars'].car_pk === car['car_pk']"
                         > {{ car['model'] }}</option>
                 </select>
 

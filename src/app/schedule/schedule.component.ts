@@ -128,7 +128,7 @@ export class ScheduleComponent implements OnInit {
   public updateSchedule(pk: string, dateTime: string, car_pk: number, destiny_pk: number): void {
     const data = {
       'dateTime' : dateTime,
-      'cars' : car_pk,
+      'cars' : Number(car_pk),
       'final_destiny' : Number(destiny_pk),
       'property_user' : localStorage.getItem('pk'),
     };

@@ -14,10 +14,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
+
   /**
    * User Name
    */
   public name = '';
+
+  /**
+   * Schedule List
+   */
+  public scheduleList = [];
+
   /**
    * Dashboard Constructor
    *
@@ -42,7 +49,20 @@ export class DashboardComponent implements OnInit {
         } else {
           this.name = response.body[0].name;
         }
-        }
+      }
+    });
+    this.getScheduleList();
+  }
+
+  /**
+   * Method to get schedule List
+   */
+  public getScheduleList(): void {
+    const data = {};
+    this.users.getScheduleList(data, (response: any) => {
+      if (response.status === 200) {
+        this.scheduleList = response.body;
+      }
     });
   }
 
