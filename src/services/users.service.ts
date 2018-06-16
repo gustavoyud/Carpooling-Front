@@ -141,4 +141,55 @@ export class UsersService {
     });
   }
 
+  /**
+   * Method to get a schedule List
+   * @param { Object } params - Data
+   * @param { Function } destiny - Function to deal with HTTP Response
+   */
+  public getScheduleList(params: {}, destiny: Function): void {
+    this.client.get('/api/user/schedule/get/', params, (response: any) => {
+      destiny(response);
+    });
+  }
+
+  /**
+   * Method to Create a new Schedule
+   *
+   * @param params - Data
+   * @param { Function } destiny - Function to deal with HTTP Response
+   */
+  public createSchedule(params: {}, destiny: Function): void {
+    this.client.post('/api/user/schedule/post/', params, (response: any) => {
+      destiny(response);
+    });
+  }
+
+
+    /**
+   * Method to Update Schedule Object
+   *
+   * @param { string } pk - Schedule Primary Key
+   * @param params - Data
+   * @param { Function } destiny - Function to deal with HTTP Response
+   */
+  public updateSchedule(pk: string, params: {} , destiny: Function): void {
+    this.client.put('/api/user/schedule/' + pk + '/', params , (response: any) => {
+      destiny(response);
+    });
+  }
+
+    /**
+   * Method to Delete Schedule Object
+   *
+   * @param { string } pk - Schedule Primary Key
+   * @param { Function } destiny - Function to deal with HTTP Response
+   */
+  public deleteSchedule(pk: string, destiny: Function): void {
+    const data = {};
+    this.client.delete('/api/user/schedule/' + pk + '/' , data, (response: any) => {
+      destiny(response);
+    });
+  }
+
+
 }

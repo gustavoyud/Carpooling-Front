@@ -1,4 +1,4 @@
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { ClientService } from './client.service';
 import { Injectable } from '@angular/core';
 
@@ -17,6 +17,7 @@ export class AuthService {
   constructor(
     private client: ClientService,
     private router: Router,
+    private route: ActivatedRoute,
   ) { }
 
   /**
@@ -44,9 +45,7 @@ export class AuthService {
   public signinCheck(destiny: Function): void {
     const params = {};
     this.client.get('/login/check/', params, (response: any) => {
-      if (response.status === 200) {
-        this.router.navigate(['/dashboard/']);
-      } else if (response.status === 401 || response.status === 403) {
+       if (response.status === 401 || response.status === 403) {
         this.router.navigate(['/login/']);
       }
       destiny(response);

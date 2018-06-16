@@ -91,8 +91,6 @@ export class CarsComponent implements OnInit {
     this.users.getCars(data, (response) => {
       if (response.status === 200) {
         this.carList = response.body;
-        console.log(response.body);
-        console.log(this.carList);
       }
     });
   }
