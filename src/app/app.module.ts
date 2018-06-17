@@ -1,10 +1,11 @@
+import { MaterialModule } from './material.module';
 import { UsersService } from './../services/users.service';
 import { AppRouting } from './app.routing';
 import { RouterModule, ChildrenOutletContexts } from '@angular/router';
 import { ClientService } from './../services/client.service';
 import { AuthService } from '../services/auth.service';
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
@@ -16,7 +17,10 @@ import { SignupComponent } from './signup/signup.component';
 import { CarsComponent } from './cars/cars.component';
 import { DestinyComponent } from './destiny/destiny.component';
 import { ScheduleComponent } from './schedule/schedule.component';
-
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {MatButtonModule, MatCheckboxModule} from '@angular/material';
+import { MenuComponent } from './menu/menu.component';
+import { MDBBootstrapModule } from 'angular-bootstrap-md';
 
 @NgModule({
   declarations: [
@@ -27,7 +31,8 @@ import { ScheduleComponent } from './schedule/schedule.component';
     SignupComponent,
     CarsComponent,
     DestinyComponent,
-    ScheduleComponent
+    ScheduleComponent,
+    MenuComponent
   ],
   imports: [
     BrowserModule,
@@ -35,12 +40,16 @@ import { ScheduleComponent } from './schedule/schedule.component';
     HttpClientModule,
     FormsModule,
     AppRouting,
+    BrowserAnimationsModule,
+    MaterialModule,
+    MDBBootstrapModule.forRoot()
   ],
   providers: [
     AuthService,
     ClientService,
     UsersService,
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas: [ NO_ERRORS_SCHEMA ]
 })
 export class AppModule { }

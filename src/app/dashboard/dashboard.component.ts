@@ -2,6 +2,7 @@ import { UsersService } from './../../services/users.service';
 import { Router } from '@angular/router';
 import { AuthService } from './../../services/auth.service';
 import { Component, OnInit } from '@angular/core';
+import { MatSnackBar } from '@angular/material';
 
 /**
  * Dashboard Component
@@ -50,6 +51,7 @@ export class DashboardComponent implements OnInit {
     private router: Router,
     private auth: AuthService,
     private users: UsersService,
+    public snackBar: MatSnackBar,
   ) {
     this.userPk = Number(localStorage.getItem('pk'));
   }
@@ -109,11 +111,11 @@ export class DashboardComponent implements OnInit {
     };
     this.users.schedule(data, (response: any) => {
       if (response.status === 201) {
-        this.responseMessage = 'Agendado Com Sucesso';
+        this.openSnackBar('Agendado com Sucesso', 'Sair');
         this.getScheduleList();
         this.scheduledList[i] = true;
       } else if (response.status === 400 ) {
-        this.responseMessage = response.error['non_field_errors'][0];
+        this.openSnackBar(response.error['non_field_errors'][0], 'Sair');
       }
     });
   }
@@ -143,7 +145,7 @@ export class DashboardComponent implements OnInit {
   public unschedule(pk: string, i: number): void {
     this.users.unschedule(pk, (response) => {
       if (response.status === 204) {
-        this.responseMessage = 'Desmarcado com sucesso';
+        this.openSnackBar('Desmarcado com sucesso', 'Sair');
         this.scheduledList[i] = false;
         this.getScheduleList();
       }
@@ -157,6 +159,30 @@ export class DashboardComponent implements OnInit {
     localStorage.removeItem('access_token');
     localStorage.removeItem('pk');
     this.router.navigate(['/login/']);
+  }
+
+  /**
+   * Method to Open a Material Snack Bar
+   *
+   * @param { string } message - Message that will be displayed
+   * @param { string } action - Action Message
+   */
+  public openSnackBar(message: string, action: string) {
+    this.snackBar.open(message, action, {
+      duration: 2000,
+    });
+  }
+
+  public dateTimeString(value: string, choise: string): string {
+    const date = value.split('T')[0];
+    const time = value.split('T')[1];
+
+    if (choise === 'date') {
+      return date.split('-')[2] + '/' + date.split('-')[1] + '/' + date.split('-')[0];
+    }
+    if ( choise === 'time') {
+      return time.split(':')[0] + ':' + time.split(':')[1];
+    }
   }
 
 }
