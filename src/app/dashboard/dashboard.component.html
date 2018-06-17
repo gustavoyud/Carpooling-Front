@@ -10,16 +10,27 @@
 </div>
 
 <div class="container">
-  <div class="card" *ngFor="let schedule of scheduleList">
-    <div class="card-body mb-2">
+  <h5 *ngIf="responseMessage"> {{ responseMessage }}</h5>
+  <div class="card" class="pb-2"
+       *ngFor="let schedule of scheduleList;index as i ">
+    <div class="card-body" class="mb-2">
       <h2>Modelo: {{ schedule['cars']?.model }}</h2>
       <h5>Placa: {{ schedule['cars']?.license_plate }}</h5>
       <h5>Cor: {{ schedule['cars']?.color }}</h5>
       <h5>Capacidade: {{ schedule['cars']?.capacity }}</h5>
       <h5>Hora: <time datetime="schedule['dateTime']"> {{schedule['dateTime']}} </time> </h5>
-      <h5>Endereço: {{ schedule['final_destiny']?.address }} - {{ schedule['final_destiny']?.complement }}</h5>
-      <h5>Cidade: {{schedule['final_destiny']?.city }}</h5>
-      <h5></h5>
+      <h5>Endereço de Saída: {{schedule['property_user']?.address }} - {{schedule['property_user']?.complement }}</h5>
+
+        <h5>Endereço Final: {{ schedule['final_destiny']?.address }} - {{ schedule['final_destiny']?.complement }}</h5>
+        <h5>Cidade: {{schedule['final_destiny']?.city }}</h5>
+        <h5>Motorista: {{schedule['property_user']?.name}}</h5>
+        <div>
+        <button
+          class="btn {{ scheduledList[i] ? 'btn-outline-danger' : 'btn-outline-primary' }}  mr-3"
+          (click)="scheduledList[i] ? isScheduled(schedule['schedule_pk'], i) : carpoolingSchedule(schedule['schedule_pk'], i)">
+          {{ scheduledList[i] ? 'Sair da carona' : 'Entrar na Carona' }}
+        </button>
+      </div>
     </div>
   </div>
 

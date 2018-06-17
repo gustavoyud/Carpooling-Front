@@ -191,5 +191,51 @@ export class UsersService {
     });
   }
 
+  /**
+   * Method to Schedule a Carpooling
+   *
+   * @param params - User Primary Key & Schedule Primary Key
+   * @param { Function } destiny - Function who will deal HTTP Responses
+   */
+  public schedule(params: {}, destiny: Function): void {
+    this.client.post('/schedule/user-schedule/post/', params, (response: any) => {
+      destiny(response);
+    });
+  }
 
+  /**
+   * Method to get a Scheduled Carpooling List
+   *
+   * @param params - User Primary Key & Schedule Primary Key
+   * @param { Function } destiny - Function who will deal HTTP Responses
+   */
+  public scheduleList(params: {}, destiny: Function): void {
+    this.client.get('/schedule/user-schedule/get/', params, (response: any) => {
+      destiny(response);
+    });
+  }
+
+  /**
+   * Method to check if has a Scheduled Carpooling
+   *
+   * @param params - User Primary Key & Schedule Primary Key
+   * @param { Function } destiny - Function who will deal HTTP Responses
+   */
+  public scheduleCheck(params: {}, destiny: Function): void {
+    this.client.get('/schedule/user-schedule/get/check/', params, (response: any) => {
+      destiny(response);
+    });
+  }
+
+  /**
+   * Method to unschedule a Carpooling
+   * @param { string } pk - Schedule Primary Key
+   * @param { Function } destiny - Function who will deal HTTP Responses
+   */
+  public unschedule(pk: string, destiny: Function): void {
+    const data = {};
+    this.client.delete('/schedule/user-schedule/' + pk + '/', data, (response: any) => {
+      destiny(response);
+    });
+  }
 }

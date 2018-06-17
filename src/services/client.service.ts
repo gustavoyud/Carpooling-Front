@@ -193,18 +193,12 @@ export class ClientService {
     )
       .subscribe(
         (response: any) => {
-          if (response.body['token']) {
-            localStorage.setItem('access_token', 'Token ' + response.body['token']);
-          }
           if (response.statuts === 403 || response.status === 401) {
             this.router.navigate(['/login/']);
           }
           destiny(response);
         },
         (error: HttpResponseBase) => {
-          if (error.headers['Authorization']) {
-            localStorage.setItem('access_token', error.headers['Authorization']);
-          }
           destiny(error);
         }
       );

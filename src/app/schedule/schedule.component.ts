@@ -147,7 +147,7 @@ export class ScheduleComponent implements OnInit {
       'dateTime' : this.dateTime,
       'cars': this.carPk,
       'final_destiny' : this.destinyPk,
-      'property_user' : localStorage.getItem('pk'),
+      'property_user' : Number(localStorage.getItem('pk')),
     };
     this.users.createSchedule(data, (response) => {
       if (response.status === 201) {

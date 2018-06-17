@@ -37,7 +37,7 @@
                 <option
                         *ngFor="let destiny of destinyList"
                         [value]="destiny['destiny_pk']"
-                        [selected]="schedule['final_destiny'].destiny_pk === destiny['destiny_pk']"
+                        [selected]="schedule['final_destiny']?.destiny_pk === destiny['destiny_pk']"
                         > {{ destiny['address'] }}</option>
                 </select>
 
@@ -46,7 +46,7 @@
                 <option
                         *ngFor="let car of carList"
                         [value]="car['car_pk']"
-                        [selected]="schedule['cars'].car_pk === car['car_pk']"
+                        [selected]="schedule['cars']?.car_pk === car['car_pk']"
                         > {{ car['model'] }}</option>
                 </select>
 
