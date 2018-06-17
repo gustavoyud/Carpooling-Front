@@ -58,7 +58,7 @@ export class DestinyComponent implements OnInit {
     private users: UsersService,
     private auth: AuthService,
   ) {
-    // this.auth.signinCheck(() => {});
+    this.auth.signinCheck(() => {});
   }
 
   /**

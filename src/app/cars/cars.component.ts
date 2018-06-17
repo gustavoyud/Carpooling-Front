@@ -1,5 +1,6 @@
 import { UsersService } from './../../services/users.service';
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../../services/auth.service';
 
 /**
  * Cars Service
@@ -53,12 +54,14 @@ export class CarsComponent implements OnInit {
    */
   constructor(
     private users: UsersService,
+    private auth: AuthService,
   ) { }
 
   /**
    * Initializer
    */
   ngOnInit() {
+    this.auth.signinCheck((response) => { });
     this.userPk = localStorage.getItem('pk');
     this.getCar();
   }

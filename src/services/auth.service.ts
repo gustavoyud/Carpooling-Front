@@ -44,6 +44,10 @@ export class AuthService {
   public signinCheck(destiny: Function): void {
     const params = {};
     this.client.get('/login/check/', params, (response: any) => {
+      console.log(this.router.url);
+      if (this.router.url === '/login' && response.status === 200) {
+        this.router.navigate(['/dashboard/']);
+      }
        if (response.status === 401 || response.status === 403) {
         this.router.navigate(['/login/']);
       }

@@ -1,18 +1,22 @@
-<app-menu></app-menu>
 
-<div class="text-center">
-  <h1> Seja Bem Vindo {{ name }}</h1>
+<div class="view bg">
+  <div class="container flex-center">
+    <div class="row pt-5 mt-3 w-100">
+      <div class="col-md-12 mb-3">
+        <div class="intro-info-content text-center">
+          <h2 class="h1 display-3 mb-5 wow fadeInDown animated text-white"
+          data-wow-delay="0.3s">WE <a class="blue-text font-bold">SHARING</a></h2>
+          <h5 class="font-up mb-5 mt-1 font-bold text-white wow animated  fadeInDown"
+          data-wow-delay="0.3s">Carpooling Service.</h5>
+        </div>
+      </div>
+    </div>
+    <div class="mask pattern-2"></div>
+  </div>
 </div>
-
-<div class="text-center">
-  <a [routerLink]="['/car/']">Carros</a>
-  <a [routerLink]="['/destiny/']">Destino</a>
-  <a [routerLink]="['/schedule/']">Agenda</a>
-  <a (click)="logout()"> logout </a>
-</div>
-<div class="container">
-  <h5 *ngIf="responseMessage"> {{ responseMessage }}</h5>
-  <mat-card *ngFor="let schedule of scheduleList;index as i " class="mb-5">
+<div class="container pt-5">
+  <h1 class="blue-text"> <i class="fas fa-car"></i> Sugestões </h1>
+  <mat-card *ngFor="let schedule of scheduleList;index as i " class="animated fadeInLeft mb-5">
 
     <div class="card" class="pb-2">
     <div class="card-body" class="mb-2">
@@ -37,3 +41,5 @@
 
 </div>
 </mat-card>
+</div>
+
