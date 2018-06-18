@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <div class="col-4">
+    <div class="col-xl-4 col-md-6 col-sm-12 pt-0 animated fadeInUp">
 
     <div class="form-container">
       <h2>Cadastro de carros</h2>
@@ -11,17 +11,22 @@
       <button class="btn btn-success" (click)="createCar()"> Criar</button>
     </div>
   </div>
-  <div class="col-8">
+  <div class="col-xl-8 col-md-6 col-sm-12 pt-0 ">
     <div class="cars">
-      <h2>Seus Carros</h2>
-        <div *ngFor="let car of carList" class="card mb-4">
-            <div class="card-body">
+      <h2> <i class="fas fa-car"></i> Seus Carros</h2>
+        <mat-card *ngFor="let car of carList" class="mb-4 animated fadeInRight">
               <div class="form-container">
                 <div class="row">
                   <input class="pl-3 form-container mb-2 h4" type="text" [ngModel]="car['model']" (ngModelChange)="car['model'] = $event">
-                 <div class="pl-5">
-                   <i (click)="updateCar(car['car_pk'], car['model'], car['license_plate'], car['color'], car['capacity'])" class="pl-2 fas fa-pencil-alt cursor pr-2 text-primary"></i>
-                   <i (click)="deleteCar(car['car_pk'])" class="far cursor fa-trash-alt text-danger"></i>
+                 <div class="ml-auto">
+                    <mat-menu #appMenu="matMenu">
+                        <button mat-menu-item (click)="updateCar(car['car_pk'], car['model'], car['license_plate'], car['color'], car['capacity'])"> Salvar Mudanças</button>
+                        <button mat-menu-item (click)="deleteCar(car['car_pk'])">Deletar</button>
+                      </mat-menu>
+
+                      <a mat-button [matMenuTriggerFor]="appMenu">
+                          <i class="fas fa-ellipsis-v"></i>
+                      </a>
                  </div>
 
                 </div>
@@ -31,8 +36,8 @@
                 <div class="text-center">
                 </div>
               </div>
-            </div>
-          </div>
+          </mat-card>
+          <h4 *ngIf="!carList.length"> Não existe registro de carros</h4>
     </div>
   </div>
   </div>

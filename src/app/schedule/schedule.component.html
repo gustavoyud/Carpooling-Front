@@ -1,11 +1,9 @@
 <div class="container">
   <div class="row">
-    <div class="col-4">
+    <div class="col-xl-4 col-md-6 col-sm-12 pt-0 animated fadeInUp">
         <div class="form-container">
             <h2>Cadastro de Agendas</h2>
-
-            <input class="form-control mb-2" placeholder="Data e Hora" [(ngModel)]="dateTime" type="datetime-local">
-
+            <input class="form-control mb-2"  placeholder="Data e Hora" [(ngModel)]="dateTime" type="datetime-local">
             <select class="form-control mb-2" [(ngModel)]="destinyPk">
               <option *ngFor="let destiny of destinyList" [value]="destiny['destiny_pk']"> {{ destiny['address'] }}</option>
             </select>
@@ -17,19 +15,26 @@
             <button (click)="schedule()" class="btn btn-success"> Criar</button>
           </div>
   </div>
-  <div class="col-8">
+  <div class="col-xl-8 col-md-6 col-sm-12 pt-0 ">
     <div class="schedule">
-      <h2>Agendas</h2>
-        <div *ngFor="let schedule of scheduleList" class="card mb-4">
-            <div class="card-body">
+      <h2><i class="far fa-calendar-alt pr-2"></i>Agendas</h2>
+        <mat-card *ngFor="let schedule of scheduleList" class="mb-4 animated fadeInRight">
               <div class="form-container">
                 <div class="row">
-                  <div>
-                    <i (click)="updateSchedule(schedule['schedule_pk'], schedule['dateTime'], schedule['cars'].car_pk, schedule['final_destiny'].destiny_pk)" class="fas fa-pencil-alt cursor pr-2 text-primary"></i>
-                    <i (click)="deleteSchedule(schedule['schedule_pk'])" class="far cursor fa-trash-alt text-danger"></i>
-                  </div>
+                    <div class="ml-auto">
+                        <mat-menu #appMenu="matMenu">
+                            <button mat-menu-item
+                            (click)="updateSchedule(schedule['schedule_pk'], schedule['dateTime'], schedule['cars'].car_pk, schedule['final_destiny'].destiny_pk)"> Salvar Mudanças</button>
+                            <button mat-menu-item
+                            (click)="deleteSchedule(schedule['schedule_pk'])">Deletar</button>
+                          </mat-menu>
+
+                          <a mat-button [matMenuTriggerFor]="appMenu">
+                              <i class="fas fa-ellipsis-v"></i>
+                          </a>
+                     </div>
                 </div>
-                <input class="form-control mb-2" type="datetime" placeholder="Hora" [ngModel]="schedule['dateTime']" (ngModelChange)="schedule['dateTime'] = $event">
+                <input class="form-control mb-2" type="datetime-local" placeholder="Hora" [ngModel]="schedule['dateTime']" (ngModelChange)="schedule['dateTime'] = $event">
 
                 <select class="form-control mb-2"
                         (change)="schedule['final_destiny'].destiny_pk = $event.target.value"
@@ -37,7 +42,7 @@
                 <option
                         *ngFor="let destiny of destinyList"
                         [value]="destiny['destiny_pk']"
-                        [selected]="schedule['final_destiny'].destiny_pk === destiny['destiny_pk']"
+                        [selected]="schedule['final_destiny']?.destiny_pk === destiny['destiny_pk']"
                         > {{ destiny['address'] }}</option>
                 </select>
 
@@ -46,16 +51,13 @@
                 <option
                         *ngFor="let car of carList"
                         [value]="car['car_pk']"
-                        [selected]="schedule['cars'].car_pk === car['car_pk']"
+                        [selected]="schedule['cars']?.car_pk === car['car_pk']"
                         > {{ car['model'] }}</option>
                 </select>
 
-
-                <div class="text-center">
-                </div>
               </div>
-            </div>
-          </div>
+          </mat-card>
+          <h4 *ngIf="!scheduleList.length"> Não existe registro de Agendas</h4>
     </div>
   </div>
   </div>

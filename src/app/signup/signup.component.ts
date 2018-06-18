@@ -96,13 +96,12 @@ export class SignupComponent implements OnInit {
       'federal_unit' : this.federalUnit,
       'phone': this.phone,
       'celphone': this.celphone,
-      'user': localStorage.getItem('url'),
+      'user': localStorage.getItem('pk'),
     };
     this.user.createUser(data, (response) => {
       if (response.status === 201) {
         this.router.navigate(['/dashboard/']);
       }
-      console.log(response);
     });
   }
 }

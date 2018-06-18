@@ -7,6 +7,14 @@
 
 }
 
+.bg {
+  background: url("../../assets/login.jpg")no-repeat center center;
+  background-size: cover;
+}
+
+.view {
+  height: 100vh !important;
+}
 .card {
   .form-container {
     padding: 0;
