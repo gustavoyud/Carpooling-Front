@@ -4,6 +4,9 @@
   color       : $color_font_1;
   padding-top : 20vh;
   font-family : 'Roboto', sans-serif;
+  .form-container {
+    padding: 0;
+  }
 
 }
 
@@ -24,5 +27,7 @@
 }
 
 .form-container button.btn-success {
+  width: 100%;
+  margin-left: 0px;
   background-color: $color_button_3;
 }

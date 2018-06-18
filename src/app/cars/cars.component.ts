@@ -1,6 +1,7 @@
 import { UsersService } from './../../services/users.service';
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
+import { SharedService } from '../../services/shared.service';
 
 /**
  * Cars Service
@@ -55,6 +56,7 @@ export class CarsComponent implements OnInit {
   constructor(
     private users: UsersService,
     private auth: AuthService,
+    private shared: SharedService,
   ) { }
 
   /**
@@ -94,6 +96,7 @@ export class CarsComponent implements OnInit {
     this.users.getCars(data, (response) => {
       if (response.status === 200) {
         this.carList = response.body;
+        this.shared.getCarList();
       }
     });
   }
@@ -134,9 +137,5 @@ export class CarsComponent implements OnInit {
         this.getCar();
       }
     });
-  }
-
-  public log(str: string): void {
-    console.log(str);
   }
 }

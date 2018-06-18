@@ -15,7 +15,7 @@
             <li [class.active]="router.url === '/destiny'" class="nav-item">
                 <a class="nav-link waves-light" [routerLink]="['/destiny/']" mdbWavesEffect>Destinos</a>
             </li>
-            <li [class.active]="router.url === '/schedule'" class="nav-item">
+            <li *ngIf="shared?.carList?.length" [class.active]="router.url === '/schedule'" class="nav-item">
                 <a class="nav-link waves-light" [routerLink]="['/schedule/']" mdbWavesEffect>Agenda</a>
             </li>
 

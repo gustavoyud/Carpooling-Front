@@ -1,3 +1,4 @@
+import { SharedService } from './../../services/shared.service';
 import { UsersService } from './../../services/users.service';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
@@ -18,6 +19,12 @@ export class MenuComponent implements OnInit {
    * User Name
    */
   public name = '';
+
+  /**
+   * Car List
+   */
+  public carList = [];
+
   /**
    * Menu Constructor
    * @param { Router } router - Angular Router
@@ -25,6 +32,7 @@ export class MenuComponent implements OnInit {
   constructor(
     private users: UsersService,
     public router: Router,
+    public shared: SharedService,
   ) { }
 
   /**
@@ -49,6 +57,7 @@ export class MenuComponent implements OnInit {
       }
     });
   }
+
   /**
    * logout Method
    */

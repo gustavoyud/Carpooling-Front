@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <div class="col-4">
+    <div class="col-xl-4 col-md-6 col-sm-12 pt-0 animated fadeInUp">
 
     <div class="form-container">
       <h2>Cadastro de Destinos</h2>
@@ -15,21 +15,28 @@
       <button class="btn btn-success" (click)="createDestiny()"> Criar</button>
     </div>
   </div>
-  <div class="col-8">
+  <div class="col-xl-8 col-md-6 col-sm-12 pt-0">
     <div class="cars">
-      <h2>Seus Destinos</h2>
-        <div *ngFor="let destiny of destinyList" class="card mb-4">
-            <div class="card-body">
+      <h2><i class="fas fa-map-marker"></i> Destinos cadastrados</h2>
+
+
+        <mat-card *ngFor="let destiny of destinyList" class="animated fadeInRight mb-4">
+
               <div class="form-container">
                 <div class="row">
                   <input class="pl-3 form-container mb-2 h4" type="text" [ngModel]="destiny['address']" (ngModelChange)="destiny['address'] = $event">
-                 <div class="pl-5">
-                   <i
-                   (click)="updateDestiny(destiny['destiny_pk'], destiny['address'], destiny['complement'], destiny['zip'], destiny['neighborhood'], destiny['city'], destiny['federal_unit'], destiny['phone'])"
-                   class="pl-2 fas fa-pencil-alt cursor pr-2 text-primary"></i>
-                   <i (click)="deleteDestiny(destiny['destiny_pk'])"  class="far cursor fa-trash-alt text-danger"></i>
-                 </div>
+                  <div class="ml-auto">
+                      <mat-menu #appMenu="matMenu">
+                          <button mat-menu-item
+                          (click)="updateDestiny(destiny['destiny_pk'], destiny['address'], destiny['complement'], destiny['zip'], destiny['neighborhood'], destiny['city'], destiny['federal_unit'], destiny['phone'])"
+                          > Salvar Mudanças</button>
+                          <button mat-menu-item (click)="deleteDestiny(destiny['destiny_pk'])">Deletar</button>
+                        </mat-menu>
 
+                        <a mat-button [matMenuTriggerFor]="appMenu">
+                            <i class="fas fa-ellipsis-v"></i>
+                        </a>
+                   </div>
                 </div>
                 <input class="form-control mb-2" type="text" [ngModel]="destiny['complement']" (ngModelChange)="destiny['complement'] = $event">
                 <input class="form-control mb-2" type="text" [ngModel]="destiny['zip']" (ngModelChange)="destiny['zip'] = $event">
@@ -40,8 +47,8 @@
                 <div class="text-center">
                 </div>
               </div>
-            </div>
-          </div>
+          </mat-card>
+          <h4 *ngIf="!destinyList.length"> Não existe registro de Destinos</h4>
     </div>
   </div>
   </div>

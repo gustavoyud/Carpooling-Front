@@ -18,7 +18,7 @@ import { CarsComponent } from './cars/cars.component';
 import { DestinyComponent } from './destiny/destiny.component';
 import { ScheduleComponent } from './schedule/schedule.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {MatButtonModule, MatCheckboxModule} from '@angular/material';
+import {MatButtonModule, MatCheckboxModule, DateAdapter} from '@angular/material';
 import { MenuComponent } from './menu/menu.component';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 
@@ -42,7 +42,7 @@ import { MDBBootstrapModule } from 'angular-bootstrap-md';
     AppRouting,
     BrowserAnimationsModule,
     MaterialModule,
-    MDBBootstrapModule.forRoot()
+    MDBBootstrapModule.forRoot(),
   ],
   providers: [
     AuthService,
