@@ -16,6 +16,7 @@
 </div>
 <div class="container pt-5">
   <h1 class="blue-text"> <i class="fas fa-car"></i> Sugestões </h1>
+  <h2 *ngIf="!scheduleList.length"> Não existem caronas registradas </h2>  
   <mat-card *ngFor="let schedule of scheduleList;index as i " class="mb-5">
 
     <div class="card" class="pb-2">
@@ -32,6 +33,7 @@
       <h5>Motorista: {{schedule['property_user']?.name}}</h5>
 
         <button mat-raised-button
+        [disabled]="loading"
         (click)="scheduledList[i] ? isScheduled(schedule['schedule_pk'], i) : carpoolingSchedule(schedule['schedule_pk'], i)"
         color="{{ scheduledList[i] ? 'warn' : 'primary'}}">
 

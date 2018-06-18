@@ -21,6 +21,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatButtonModule, MatCheckboxModule, DateAdapter} from '@angular/material';
 import { MenuComponent } from './menu/menu.component';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
+import { SettingsComponent } from './settings/settings.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { MDBBootstrapModule } from 'angular-bootstrap-md';
     CarsComponent,
     DestinyComponent,
     ScheduleComponent,
-    MenuComponent
+    MenuComponent,
+    SettingsComponent,
   ],
   imports: [
     BrowserModule,

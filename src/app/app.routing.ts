@@ -1,3 +1,4 @@
+import { SettingsComponent } from './settings/settings.component';
 import { ScheduleComponent } from './schedule/schedule.component';
 import { DestinyComponent } from './destiny/destiny.component';
 import { CarsComponent } from './cars/cars.component';
@@ -18,6 +19,7 @@ const routes: Routes = [
   { path: 'car', component: CarsComponent },
   { path: 'destiny', component: DestinyComponent },
   { path: 'schedule', component: ScheduleComponent },
+  { path: 'profile', component: SettingsComponent },
 ];
 
 export const AppRouting: ModuleWithProviders = RouterModule.forRoot(routes, { useHash: true });

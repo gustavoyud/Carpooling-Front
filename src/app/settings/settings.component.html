@@ -1,0 +1,51 @@
+
+<div class="profile">
+  <div class="container">
+    <div class="row">
+      <div class="col-xl-4 col-md-6 col-sm-12">
+        <div class="ml-5 pb-3">
+          <div class="user rounded-circle">
+            {{ userInfo[0]?.name | slice:0:1 }}
+          </div>
+        </div>
+      </div>
+      <div class="col-xl-8 col-md-6 col-sm-12">
+        <h2> <i class="fas fa-user-edit pr-2 pb-2"></i> Editar Perfil</h2>
+        <div class="form-container">
+            <label for="name">Nome</label>
+            <input type="text" placeholder="Nome" id="name" [(ngModel)]="name" class="form-control mb-2">
+
+            <label for="geralRegister">RG</label>
+            <input id="geralRegister" class="form-control" type="text" [(ngModel)]="geral_register">
+
+            <label for="address">Endereço</label>
+            <input id="address" class="form-control" type="text" [(ngModel)]="address">
+
+            <label for="complement">Complemento</label>
+            <input id="complement" class="form-control" type="text" [(ngModel)]="complement">
+
+            <label for="ZIP">CEP</label>
+            <input id="ZIP" class="form-control" type="text" [(ngModel)]="ZIP">
+
+            <label for="neighborhood ">Bairro</label>
+            <input id="neighborhood " class="form-control" type="text" [(ngModel)]="neighborhood">
+
+            <label for="city">Cidade</label>
+            <input id="city" class="form-control" type="text" [(ngModel)]="city" >
+
+            <label for="federalUnit">UF</label>
+            <input id="federalUnit" class="form-control" type="text" [(ngModel)]="federal_unit">
+
+            <label for="phone">Telefone</label>
+            <input id="phone" class="form-control" type="text" [(ngModel)]="phone">
+
+            <label for="celphone">Celular</label>
+            <input id="celphone" class="form-control" type="text" [(ngModel)]="celphone">
+          <button class="btn btn-success" (click)="updateUser()"> Atualizar </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+

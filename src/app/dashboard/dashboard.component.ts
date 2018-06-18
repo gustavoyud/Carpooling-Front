@@ -42,6 +42,10 @@ export class DashboardComponent implements OnInit {
   public scheduledList: boolean[] = [];
 
   /**
+   * Loading Boolean
+   */
+  public loading = false;
+  /**
    * Dashboard Constructor
    *
    * @param { Router } - Angular Router
@@ -105,6 +109,7 @@ export class DashboardComponent implements OnInit {
    * @param { string } pk - Schedule Primary Key
    */
   public carpoolingSchedule(pk: any, i: number): void {
+    this.loading = true;
     const data = {
       'schedule_id' : pk,
       'user_id': localStorage.getItem('pk'),
@@ -117,6 +122,7 @@ export class DashboardComponent implements OnInit {
       } else if (response.status === 400 ) {
         this.openSnackBar(response.error['non_field_errors'][0], 'Sair');
       }
+      this.loading = false;
     });
   }
 
@@ -143,12 +149,14 @@ export class DashboardComponent implements OnInit {
    * @param { string } pk - Schedule Primary Key
    */
   public unschedule(pk: string, i: number): void {
+    this.loading = true;
     this.users.unschedule(pk, (response) => {
       if (response.status === 204) {
         this.openSnackBar('Desmarcado com sucesso', 'Sair');
         this.scheduledList[i] = false;
         this.getScheduleList();
       }
+      this.loading = false;
     });
   }
   /**

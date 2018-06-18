@@ -1,0 +1,31 @@
+@import '../app.component.scss';
+
+.profile {
+  color       : $color_font_1;
+  padding-top : 20vh;
+  font-family : 'Roboto', sans-serif;
+}
+
+.user {
+  height: 250px;
+  width: 250px;
+  background-color: #00C851 ;
+  color: #FFF;
+  font-size: 100px;
+  text-align: center;
+  padding-top: 50px;
+}
+
+.form-container {
+  padding: 0;
+  input.h4 {
+    border      : none;
+    outline     : none!important;
+    font-size   : 36px;
+    font-weight : 300;
+    width       : 60%;
+  }
+  button.btn-danger {
+    background-color: $color_button_2;
+  }
+}

@@ -42,6 +42,18 @@ export class UsersService {
   }
 
   /**
+   * Method to Update User Information
+   *
+   * @param { string } pk - User Primary Key
+   * @param params - User Informations
+   * @param { Function } destiny - Fuction who will deal with HTTP Responses
+   */
+  public updateUser(pk: string, params: {}, destiny: Function): void {
+    this.client.put('/users/' + pk + '/', params, (response: any) => {
+      destiny(response);
+    });
+  }
+  /**
    * Create a new Car
    *
    * @param params - Data
