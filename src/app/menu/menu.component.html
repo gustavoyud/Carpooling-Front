@@ -1,0 +1,36 @@
+
+<mdb-navbar *ngIf="router.url !== '/login' && router.url !== '/register' && router.url !== '/signup'" SideClass="navbar navbar-expand-lg navbar-dark  light-blue darken-4 fixed-top scrolling-navbar">
+
+    <logo><a class="navbar-brand text-white">WeSharing</a></logo>
+
+    <links>
+        <ul class="navbar-nav mr-auto">
+            <li [class.active]="router.url === '/dashboard'" class="nav-item">
+                <a class="nav-link waves-light" [routerLink]="['/dashboard/']" mdbWavesEffect>Caronas<span class="sr-only">(current)</span></a>
+            </li>
+
+          <li [class.active]="router.url === '/car'" class="nav-item">
+                <a class="nav-link waves-light" [routerLink]="['/car/']" mdbWavesEffect>Carros</a>
+            </li>
+            <li [class.active]="router.url === '/destiny'" class="nav-item">
+                <a class="nav-link waves-light" [routerLink]="['/destiny/']" mdbWavesEffect>Destinos</a>
+            </li>
+            <li *ngIf="shared?.carList?.length" [class.active]="router.url === '/schedule'" class="nav-item">
+                <a class="nav-link waves-light" [routerLink]="['/schedule/']" mdbWavesEffect>Agenda</a>
+            </li>
+
+        </ul>
+        <form class="form-inline waves-light navbar-nav" mdbWavesEffect>
+          <li class="nav-item" [matMenuTriggerFor]="appMenu">
+            <div class="rounded-circle user blue-text" >
+              {{ name | slice:0:1 }}
+            </div>
+          </li>
+              <mat-menu #appMenu="matMenu">
+                  <button [routerLink]="['/profile']" mat-menu-item >Perfil</button>
+                  <button (click)="logout()" mat-menu-item>Logout</button>
+              </mat-menu>
+        </form>
+    </links>
+
+</mdb-navbar>

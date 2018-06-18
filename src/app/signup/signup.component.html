@@ -1,0 +1,40 @@
+<div class="container">
+  <div class="form-container">
+    <h1 class="text-left">Finalize seu cadastro</h1>
+    <h3>Insira suas informações a baixo</h3>
+
+    <label for="name">Nome</label>
+    <input id="name" class="form-control" type="text" [(ngModel)]="name" required minlength="4" #nameForm="ngModel">
+
+    <label for="geralRegister">RG</label>
+    <input id="geralRegister" class="form-control" type="text" [(ngModel)]="geralRegister">
+
+    <label for="address">Endereço</label>
+    <input id="address" class="form-control" type="text" [(ngModel)]="address" required minlength="4" #addressForm="ngModel">
+
+    <label for="complement">Complemento</label>
+    <input id="complement" class="form-control" type="text" [(ngModel)]="complement">
+
+    <label for="ZIP">CEP</label>
+    <input id="ZIP" class="form-control" type="text" [(ngModel)]="ZIP" required minlength="4" #ZIPForm="ngModel">
+
+    <label for="neighborhood ">Bairro</label>
+    <input id="neighborhood " class="form-control" type="text" [(ngModel)]="neighborhood ">
+
+    <label for="city">Cidade</label>
+    <input id="city" class="form-control" type="text" [(ngModel)]="city" required minlength="4" #cityForm="ngModel">
+
+    <label for="federalUnit">UF</label>
+    <input id="federalUnit" class="form-control" type="text" [(ngModel)]="federalUnit">
+
+    <label for="phone">Telefone</label>
+    <input id="phone" class="form-control" type="text" [(ngModel)]="phone" required minlength="4" #phoneForm="ngModel">
+
+    <label for="celphone">Celular</label>
+    <input id="celphone" class="form-control" type="text" [(ngModel)]="celphone">
+
+    <div class="text-center">
+      <button [disabled]="nameForm.invalid" (click)="signup()"> Enviar </button>
+    </div>
+  </div>
+</div>

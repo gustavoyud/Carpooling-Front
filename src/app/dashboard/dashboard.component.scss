@@ -1,0 +1,36 @@
+@import '../app.component.scss';
+
+.cars{
+  color       : $color_font_1;
+  padding-top : 20vh;
+  font-family : 'Roboto', sans-serif;
+
+}
+
+.bg {
+  background: url("../../assets/login.jpg")no-repeat center center;
+  background-size: cover;
+}
+
+.view {
+  height: 100vh !important;
+}
+.card {
+  .form-container {
+    padding: 0;
+    input.h4 {
+      border      : none;
+      outline     : none!important;
+      font-size   : 36px;
+      font-weight : 300;
+      width       : 80%;
+    }
+    button.btn-danger {
+      background-color: $color_button_2;
+    }
+  }
+}
+
+.form-container button.btn-success {
+  background-color: $color_button_3;
+}

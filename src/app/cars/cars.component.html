@@ -1,0 +1,44 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xl-4 col-md-6 col-sm-12 pt-0 animated fadeInUp">
+
+    <div class="form-container">
+      <h2>Cadastro de carros</h2>
+      <input class="form-control mb-2" placeholder="Modelo" type="text" [(ngModel)]="model">
+      <input class="form-control mb-2" placeholder="Placa" type="text" [(ngModel)]="license_plate">
+      <input class="form-control mb-2" placeholder="Cor" type="text" [(ngModel)]="color">
+      <input class="form-control mb-2" placeholder="Capacidade" type="text" [(ngModel)]="capacity">
+      <button class="btn btn-success" (click)="createCar()"> Criar</button>
+    </div>
+  </div>
+  <div class="col-xl-8 col-md-6 col-sm-12 pt-0 ">
+    <div class="cars">
+      <h2> <i class="fas fa-car"></i> Seus Carros</h2>
+        <mat-card *ngFor="let car of carList" class="mb-4 animated fadeInRight">
+              <div class="form-container">
+                <div class="row">
+                  <input class="pl-3 form-container mb-2 h4" type="text" [ngModel]="car['model']" (ngModelChange)="car['model'] = $event">
+                 <div class="ml-auto">
+                    <mat-menu #appMenu="matMenu">
+                        <button mat-menu-item (click)="updateCar(car['car_pk'], car['model'], car['license_plate'], car['color'], car['capacity'])"> Salvar Mudanças</button>
+                        <button mat-menu-item (click)="deleteCar(car['car_pk'])">Deletar</button>
+                      </mat-menu>
+
+                      <a mat-button [matMenuTriggerFor]="appMenu">
+                          <i class="fas fa-ellipsis-v"></i>
+                      </a>
+                 </div>
+
+                </div>
+                <input class="form-control mb-2" type="text" [ngModel]="car['license_plate']" (ngModelChange)="car['license_plate'] = $event">
+                <input class="form-control mb-2" type="text" [ngModel]="car['color']" (ngModelChange)="car['color'] = $event">
+                <input class="form-control mb-2" type="text" [ngModel]="car['capacity']" (ngModelChange)="car['capacity'] = $event">
+                <div class="text-center">
+                </div>
+              </div>
+          </mat-card>
+          <h4 *ngIf="!carList.length"> Não existe registro de carros</h4>
+    </div>
+  </div>
+  </div>
+</div>

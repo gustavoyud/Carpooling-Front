@@ -1,0 +1,12 @@
+@import '../app.component.scss';
+
+.bg {
+  background-size     : cover;
+  background-image    : url("../../assets/login.jpg");
+  background-repeat   : no-repeat;
+  background-position : fixed;
+}
+label { font-weight: 500}
+.form-container {
+  padding     : 20vh 12vw;
+}

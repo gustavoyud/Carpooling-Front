@@ -1,0 +1,47 @@
+
+<div class="view bg">
+  <div class="container flex-center">
+    <div class="row pt-5 mt-3 w-100">
+      <div class="col-md-12 mb-3">
+        <div class="intro-info-content text-center">
+          <h2 class="h1 display-3 mb-5 wow fadeInDown animated text-white"
+          data-wow-delay="0.3s">WE <a class="blue-text font-bold">SHARING</a></h2>
+          <h5 class="font-up mb-5 mt-1 font-bold text-white wow animated  fadeInDown"
+          data-wow-delay="0.3s">Carpooling Service.</h5>
+        </div>
+      </div>
+    </div>
+    <div class="mask pattern-2"></div>
+  </div>
+</div>
+<div class="container pt-5">
+  <h1 class="blue-text"> <i class="fas fa-car"></i> Sugestões </h1>
+  <h2 *ngIf="!scheduleList.length"> Não existem caronas registradas </h2>  
+  <mat-card *ngFor="let schedule of scheduleList;index as i " class="mb-5">
+
+    <div class="card" class="pb-2">
+    <div class="card-body" class="mb-2">
+      <h2>Modelo: {{ schedule['cars']?.model }}</h2>
+      <h5>Placa: {{ schedule['cars']?.license_plate }}</h5>
+      <h5>Cor: {{ schedule['cars']?.color }}</h5>
+      <h5>Capacidade: {{ schedule['cars']?.capacity }}</h5>
+      <h5>Data e Hora: {{dateTimeString(schedule['dateTime'], 'date')}} -  {{dateTimeString(schedule['dateTime'], 'time')}} </h5>
+      <h5>Endereço de Saída: {{schedule['property_user']?.address }} - {{schedule['property_user']?.complement }}</h5>
+
+      <h5>Endereço Final: {{ schedule['final_destiny']?.address }} - {{ schedule['final_destiny']?.complement }}</h5>
+      <h5>Cidade: {{schedule['final_destiny']?.city }}</h5>
+      <h5>Motorista: {{schedule['property_user']?.name}}</h5>
+
+        <button mat-raised-button
+        [disabled]="loading"
+        (click)="scheduledList[i] ? isScheduled(schedule['schedule_pk'], i) : carpoolingSchedule(schedule['schedule_pk'], i)"
+        color="{{ scheduledList[i] ? 'warn' : 'primary'}}">
+
+        {{ scheduledList[i] ? 'Sair da carona' : 'Entrar na Carona' }}
+      </button>
+  </div>
+
+</div>
+</mat-card>
+</div>
+

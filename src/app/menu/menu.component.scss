@@ -1,0 +1,16 @@
+.user {
+  height: 50px;
+  width: 50px;
+  background-color: #FFF;
+  font-size: 30px;
+  text-align: center;
+  padding-top: 5px;
+}
+
+::ng-deep .fixed-top{
+  z-index: 90!important;
+}
+::ng-deep .mat-menu-panel {
+  margin: 40px -90px;
+  outline: none !important;
+}
